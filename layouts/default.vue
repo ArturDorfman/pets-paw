@@ -1,8 +1,12 @@
 <template>
   <div class="flex h-full">
     <!-- SIDEBAR -->
-    <div class="w-[300px] border-r border-gray-300 flex flex-col">
-      <div class="h-20 flex items-center justify-center shrink-0 border-b border-gray-300 shadow">Logo</div>
+    <div class="w-1/2 border-r border-gray-300 flex flex-col">
+      <div class="flex items-center">
+        <RenderIcons icon-name="logo" />
+        <h3>PetsPaw</h3>
+      </div>
+
       <div class="flex-grow p-5">
         <NuxtLink
           v-for="item in navigation"
@@ -20,19 +24,6 @@
     </div>
 
     <div class="flex-grow flex flex-col">
-      <!-- HEADER -->
-      <div class="shrink-0 flex items-center h-20 bg-white shadow border-b border-gray-300 px-5">
-        <Compute
-          #default="{ labelClass, pageLabel }"
-          :labelClass="'font-bold text-lg'"
-          :pageLabel="$route.meta?.pageLabel"
-        >
-          <slot name="header" :labelClass="labelClass" :pageLabel="pageLabel">
-            <p :class="labelClass">{{ pageLabel }}</p>
-          </slot>
-        </Compute>
-      </div>
-
       <!-- MAIN -->
       <main class="flex-grow p-5">
         <slot />
@@ -44,5 +35,7 @@
 <script lang="ts" setup>
 const router = useRouter()
 
-const navigation = router.options.routes.slice().sort((a, b) => a.meta.navOrder - b.meta.navOrder)
+const navigation = router.options.routes.slice()
+  .filter((route) => route.meta?.pageLabel)
+  .sort((a, b) => a.meta.navOrder - b.meta.navOrder)
 </script>

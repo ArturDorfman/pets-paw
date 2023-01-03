@@ -3,10 +3,10 @@
 export default defineNuxtPlugin(() => ({
   provide: {
     routeNames: {
+      voting: 'voting',
       index: 'index',
-      contacts: 'contacts',
-      about: 'about',
-      aboutSoftonix: 'about-softonix'
+      gallery: 'gallery',
+      breeds: 'breeds'
     }
   }
 }))

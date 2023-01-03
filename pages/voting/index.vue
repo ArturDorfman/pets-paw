@@ -1,9 +1,10 @@
 <template>
-  <div>Hello Softonix</div>
+  <div>voting page</div>
 </template>
 
 <script lang="ts" setup>
 definePageMeta({
-  pageLabel: 'Softonix'
+  pageLabel: 'voting',
+  navOrder: 1
 })
 </script>
